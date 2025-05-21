@@ -39,7 +39,7 @@ export default function HomeContent() {
           </div>
 
           {/* Rechte Spalte mit Bild - korrigierter Abstand */}
-          <div className="hidden mx-auto mt-16 sm:mt-24 lg:block lg:ml-10 lg:mr-0 lg:mt-0 lg:max-w-lg lg:flex-1 lg:flex lg:items-center lg:justify-end">
+          <div className="hidden mx-auto mt-16 sm:mt-24 lg:block lg:ml-45 lg:mr-0 lg:mt-0 lg:max-w-lg lg:flex-1 lg:flex lg:items-center lg:justify-end">
             <div className="relative overflow-hidden rounded-xl shadow-2xl">
               <Image
                 src="/barrier-free-access.png"
