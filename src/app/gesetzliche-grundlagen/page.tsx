@@ -328,8 +328,8 @@ export default function GesetzlicheGrundlagen() {
                     />
                   </svg>
                   {language === "de"
-                    ? "Selbstbedienungsterminals (Geldautomaten, Fahrkartenautomaten, Check-in-Automaten)"
-                    : "Self-service terminals (ATMs, ticket machines, check-in machines)"}
+                    ? "Selbstbedienungsterminals "
+                    : "Self-service terminals"}
                 </li>
                 <li className="flex items-center gap-2">
                   <svg
@@ -448,8 +448,8 @@ export default function GesetzlicheGrundlagen() {
                     />
                   </svg>
                   {language === "de"
-                    ? "Elektronische Kommunikationsdienste (Telefonie, Chat, Videokonferenz)"
-                    : "Electronic communication services (telephony, chat, video conferencing)"}
+                    ? "Elektronische Kommunikationsdienste"
+                    : "Electronic communication services"}
                 </li>
                 <li className="flex items-center gap-2">
                   <svg

@@ -17,46 +17,56 @@ export default function AccessibilityCheckForm({
   const [validationMessage, setValidationMessage] = useState("");
   const { language, t } = useLanguage();
 
-  const validateUrl = (value: string): boolean => {
+  const validateUrl = (
+    value: string
+  ): { isValid: boolean; processedUrl: string } => {
     if (!value.trim()) {
       setValidationMessage(
         language === "de"
           ? "Bitte geben Sie eine URL ein"
           : "Please enter a URL"
       );
-      return false;
+      return { isValid: false, processedUrl: value };
+    }
+
+    let processedUrl = value;
+    if (
+      !processedUrl.startsWith("http://") &&
+      !processedUrl.startsWith("https://")
+    ) {
+      processedUrl = "http://" + processedUrl;
     }
 
     try {
-      const urlObj = new URL(value);
+      const urlObj = new URL(processedUrl);
       if (!["http:", "https:"].includes(urlObj.protocol)) {
         setValidationMessage(
           language === "de"
             ? "Nur HTTP und HTTPS URLs werden unterstützt"
             : "Only HTTP and HTTPS URLs are supported"
         );
-        return false;
+        return { isValid: false, processedUrl };
       }
       setValidationMessage("");
-      return true;
+      return { isValid: true, processedUrl };
     } catch {
       setValidationMessage(
         language === "de"
-          ? "Bitte geben Sie eine gültige URL ein (z.B. https://example.com)"
-          : "Please enter a valid URL (e.g. https://example.com)"
+          ? "Bitte geben Sie eine gültige URL ein (z.B. example.com oder www.example.com)"
+          : "Please enter a valid URL (e.g. example.com or www.example.com)"
       );
-      return false;
+      return { isValid: false, processedUrl: value };
     }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const isUrlValid = validateUrl(url);
-    setIsValid(isUrlValid);
+    const { isValid, processedUrl } = validateUrl(url);
+    setIsValid(isValid);
 
-    if (isUrlValid) {
-      onSubmit(url);
+    if (isValid) {
+      onSubmit(processedUrl);
     }
   };
 
@@ -77,7 +87,7 @@ export default function AccessibilityCheckForm({
         <div className="mb-4">
           <label
             htmlFor="url"
-            className="block text-sm font-medium text-gray-700 mb-1"
+            className="block text-sm font-medium text-gray-600 mb-1"
           >
             {t("check.enterUrl")}
           </label>
@@ -92,7 +102,7 @@ export default function AccessibilityCheckForm({
                 onChange={handleUrlChange}
                 className={`w-full block rounded-md px-4 py-3 border ${
                   !isValid ? "border-red-500" : "border-gray-300"
-                } shadow-sm focus:border-blue-500 focus:ring-blue-500`}
+                } shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:text-gray-900 focus:bg-white text-gray-900 bg-white placeholder:text-gray-500 disabled:bg-gray-100 disabled:text-gray-700 disabled:border-gray-300`}
                 aria-describedby={!isValid ? "url-error" : undefined}
                 aria-invalid={!isValid}
                 disabled={isLoading}

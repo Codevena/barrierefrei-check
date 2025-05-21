@@ -219,9 +219,9 @@ export default function DetailedIssues({ result }: DetailedIssuesProps) {
                         <div key={index} className="p-4">
                           <div className="flex items-start mb-2">
                             <div
-                              className={`inline-flex items-center justify-center h-6 w-6 rounded-full mr-2 ${impactClasses.bg} ${impactClasses.text}`}
+                              className={`inline-flex items-center justify-center h-7 w-7 rounded-full mr-2 ${impactClasses.bg} ${impactClasses.text} border ${impactClasses.border}`}
                             >
-                              <span className="text-xs font-medium">
+                              <span className="text-sm font-bold">
                                 {issue.impact === "critical"
                                   ? "C"
                                   : issue.impact === "serious"
@@ -247,7 +247,7 @@ export default function DetailedIssues({ result }: DetailedIssuesProps) {
                             <div className="text-sm font-medium text-gray-800 mb-1">
                               {t.examples} ({issue.count} {t.found}):
                             </div>
-                            <div className="bg-gray-50 p-3 rounded text-sm font-mono overflow-x-auto">
+                            <div className="bg-gray-50 p-4 rounded-md text-base font-mono overflow-x-auto border border-gray-200 shadow-inner">
                               {issue.examples.map((example, i) => (
                                 <div key={i} className="mb-2 last:mb-0">
                                   <code className="text-xs">

@@ -81,6 +81,22 @@ export default function Kontakt() {
     <div className="bg-white py-12 sm:py-16">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:text-center">
+          <div className="inline-block p-2 rounded-full bg-blue-50 mb-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-8 w-8 text-blue-600"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              />
+            </svg>
+          </div>
           <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             {language === "de" ? "Kontakt & Feedback" : "Contact & Feedback"}
           </h1>
@@ -93,26 +109,28 @@ export default function Kontakt() {
 
         <div className="mx-auto mt-16 max-w-2xl sm:mt-20">
           {formStatus === "success" ? (
-            <div className="rounded-md bg-green-50 p-6">
+            <div className="rounded-xl bg-green-50 p-6 shadow-lg border border-green-100 transform transition-all duration-300">
               <div className="flex">
                 <div className="flex-shrink-0">
-                  <svg
-                    className="h-6 w-6 text-green-600"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
+                  <div className="p-2 bg-green-100 rounded-full">
+                    <svg
+                      className="h-8 w-8 text-green-600"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="2"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
                 </div>
-                <div className="ml-3">
-                  <h2 className="text-lg font-medium text-green-800">
+                <div className="ml-4">
+                  <h2 className="text-xl font-semibold text-green-800">
                     {language === "de"
                       ? "Vielen Dank für Ihre Nachricht"
                       : "Thank you for your message"}
@@ -126,7 +144,7 @@ export default function Kontakt() {
                     <button
                       type="button"
                       onClick={() => setFormStatus("idle")}
-                      className="rounded-md bg-green-50 px-4 py-2 text-sm font-medium text-green-800 hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2"
+                      className="rounded-md bg-green-100 px-5 py-2.5 text-sm font-medium text-green-800 hover:bg-green-200 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2 transition-all duration-200"
                     >
                       {language === "de"
                         ? "Weiteres Feedback senden"
@@ -140,7 +158,7 @@ export default function Kontakt() {
             <form
               onSubmit={handleSubmit}
               ref={formRef}
-              className="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2"
+              className="bg-white shadow-lg ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2 hover:shadow-xl transition-all duration-300"
             >
               <div className="px-4 py-6 sm:p-8">
                 <div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -149,17 +167,33 @@ export default function Kontakt() {
                       htmlFor="name"
                       className="block text-sm font-medium text-gray-900"
                     >
-                      {language === "de" ? "Name" : "Name"}
+                      <div className="flex items-center">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-4 w-4 text-blue-600 mr-2"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                          />
+                        </svg>
+                        {language === "de" ? "Name" : "Name"}
+                      </div>
                     </label>
-                    <div className="mt-2.5">
+                    <div className="mt-2.5 relative">
                       <input
                         type="text"
                         name="name"
                         id="name"
                         autoComplete="name"
-                        className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ${
+                        className={`block w-full rounded-md border-0 px-3.5 py-3 text-gray-900 shadow-sm ring-1 ring-inset ${
                           errors.name ? "ring-red-500" : "ring-gray-300"
-                        } placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6`}
+                        } placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 transition-all duration-200`}
                         aria-invalid={errors.name ? "true" : "false"}
                         aria-describedby={
                           errors.name ? "name-error" : undefined
@@ -167,9 +201,23 @@ export default function Kontakt() {
                       />
                       {errors.name && (
                         <p
-                          className="mt-2 text-sm text-red-600"
+                          className="mt-2 text-sm text-red-600 flex items-center"
                           id="name-error"
                         >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-4 w-4 mr-1"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                            />
+                          </svg>
                           {errors.name}
                         </p>
                       )}
@@ -180,7 +228,23 @@ export default function Kontakt() {
                       htmlFor="email"
                       className="block text-sm font-medium text-gray-900"
                     >
-                      {language === "de" ? "E-Mail" : "Email"}
+                      <div className="flex items-center">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-4 w-4 text-blue-600 mr-2"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                          />
+                        </svg>
+                        {language === "de" ? "E-Mail" : "Email"}
+                      </div>
                     </label>
                     <div className="mt-2.5">
                       <input
@@ -188,9 +252,9 @@ export default function Kontakt() {
                         name="email"
                         id="email"
                         autoComplete="email"
-                        className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ${
+                        className={`block w-full rounded-md border-0 px-3.5 py-3 text-gray-900 shadow-sm ring-1 ring-inset ${
                           errors.email ? "ring-red-500" : "ring-gray-300"
-                        } placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6`}
+                        } placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 transition-all duration-200`}
                         aria-invalid={errors.email ? "true" : "false"}
                         aria-describedby={
                           errors.email ? "email-error" : undefined
@@ -198,45 +262,91 @@ export default function Kontakt() {
                       />
                       {errors.email && (
                         <p
-                          className="mt-2 text-sm text-red-600"
+                          className="mt-2 text-sm text-red-600 flex items-center"
                           id="email-error"
                         >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-4 w-4 mr-1"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                            />
+                          </svg>
                           {errors.email}
                         </p>
                       )}
                     </div>
                   </div>
-                  <div className="sm:col-span-2">
+                  <div className="sm:col-span-6">
                     <label
                       htmlFor="subject"
                       className="block text-sm font-medium text-gray-900"
                     >
-                      {language === "de" ? "Betreff" : "Subject"}
+                      <div className="flex items-center">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-4 w-4 text-blue-600 mr-2"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
+                          />
+                        </svg>
+                        {language === "de" ? "Betreff" : "Subject"}
+                      </div>
                     </label>
                     <div className="mt-2.5">
                       <input
                         type="text"
                         name="subject"
                         id="subject"
-                        className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 px-3.5 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 transition-all duration-200"
                       />
                     </div>
                   </div>
-                  <div className="sm:col-span-2">
+                  <div className="sm:col-span-6">
                     <label
                       htmlFor="message"
                       className="block text-sm font-medium text-gray-900"
                     >
-                      {language === "de" ? "Nachricht" : "Message"}
+                      <div className="flex items-center">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-4 w-4 text-blue-600 mr-2"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+                          />
+                        </svg>
+                        {language === "de" ? "Nachricht" : "Message"}
+                      </div>
                     </label>
                     <div className="mt-2.5">
                       <textarea
                         name="message"
                         id="message"
-                        rows={4}
-                        className={`block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ${
+                        rows={5}
+                        className={`block w-full rounded-md border-0 px-3.5 py-3 text-gray-900 shadow-sm ring-1 ring-inset ${
                           errors.message ? "ring-red-500" : "ring-gray-300"
-                        } placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6`}
+                        } placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 transition-all duration-200`}
                         aria-invalid={errors.message ? "true" : "false"}
                         aria-describedby={
                           errors.message ? "message-error" : undefined
@@ -244,9 +354,23 @@ export default function Kontakt() {
                       />
                       {errors.message && (
                         <p
-                          className="mt-2 text-sm text-red-600"
+                          className="mt-2 text-sm text-red-600 flex items-center"
                           id="message-error"
                         >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-4 w-4 mr-1"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                            />
+                          </svg>
                           {errors.message}
                         </p>
                       )}
@@ -254,18 +378,18 @@ export default function Kontakt() {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center justify-end gap-x-6 border-t border-gray-900/10 px-4 py-4 sm:px-8">
+              <div className="flex items-center justify-end gap-x-4 border-t border-gray-900/10 px-4 py-4 sm:px-8">
                 <button
                   type="button"
                   onClick={handleReset}
-                  className="text-sm font-semibold leading-6 text-gray-900"
+                  className="text-sm font-semibold leading-6 text-gray-900 hover:text-gray-700 transition-colors duration-200"
                 >
                   {language === "de" ? "Zurücksetzen" : "Reset"}
                 </button>
                 <button
                   type="submit"
                   disabled={formStatus === "submitting"}
-                  className="rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 disabled:opacity-50"
+                  className="rounded-md bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 disabled:opacity-70 transition-all duration-200 flex items-center"
                 >
                   {formStatus === "submitting" ? (
                     <div className="flex items-center">
@@ -292,9 +416,41 @@ export default function Kontakt() {
                       {language === "de" ? "Wird gesendet..." : "Sending..."}
                     </div>
                   ) : language === "de" ? (
-                    "Nachricht senden"
+                    <span className="flex items-center">
+                      <span>Nachricht senden</span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-4 w-4 ml-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M14 5l7 7m0 0l-7 7m7-7H3"
+                        />
+                      </svg>
+                    </span>
                   ) : (
-                    "Send message"
+                    <span className="flex items-center">
+                      <span>Send message</span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-4 w-4 ml-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M14 5l7 7m0 0l-7 7m7-7H3"
+                        />
+                      </svg>
+                    </span>
                   )}
                 </button>
               </div>
@@ -304,8 +460,8 @@ export default function Kontakt() {
 
         <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-            <div className="flex flex-col items-start">
-              <div className="rounded-md bg-blue-50 p-2 ring-1 ring-blue-600/20">
+            <div className="flex flex-col items-start bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100">
+              <div className="rounded-md bg-blue-50 p-3 ring-1 ring-blue-600/20">
                 <svg
                   className="h-6 w-6 text-blue-600"
                   fill="none"
@@ -330,16 +486,30 @@ export default function Kontakt() {
               </p>
               <a
                 href="mailto:info@barrierefrei-gesetz.de"
-                className="mt-2 text-sm font-medium text-blue-600 hover:text-blue-500"
+                className="mt-2 text-sm font-medium text-blue-600 hover:text-blue-500 flex items-center group transition-all duration-200"
               >
-                info@barrierefrei-gesetz.de
+                <span>info@barrierefrei-gesetz.de</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4 ml-1 transform group-hover:translate-x-1 transition-transform duration-200"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
               </a>
             </div>
 
-            <div className="flex flex-col items-start">
-              <div className="rounded-md bg-blue-50 p-2 ring-1 ring-blue-600/20">
+            <div className="flex flex-col items-start bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100">
+              <div className="rounded-md bg-indigo-50 p-3 ring-1 ring-indigo-600/20">
                 <svg
-                  className="h-6 w-6 text-blue-600"
+                  className="h-6 w-6 text-indigo-600"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
@@ -362,16 +532,30 @@ export default function Kontakt() {
               </p>
               <a
                 href="tel:+4930123456789"
-                className="mt-2 text-sm font-medium text-blue-600 hover:text-blue-500"
+                className="mt-2 text-sm font-medium text-indigo-600 hover:text-indigo-500 flex items-center group transition-all duration-200"
               >
-                +49 30 123 456 789
+                <span>+49 30 123 456 789</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4 ml-1 transform group-hover:translate-x-1 transition-transform duration-200"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
               </a>
             </div>
 
-            <div className="flex flex-col items-start">
-              <div className="rounded-md bg-blue-50 p-2 ring-1 ring-blue-600/20">
+            <div className="flex flex-col items-start bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100">
+              <div className="rounded-md bg-amber-50 p-3 ring-1 ring-amber-600/20">
                 <svg
-                  className="h-6 w-6 text-blue-600"
+                  className="h-6 w-6 text-amber-600"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"

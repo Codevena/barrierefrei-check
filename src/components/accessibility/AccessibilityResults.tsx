@@ -788,8 +788,8 @@ export default function AccessibilityResults({
             />
           </svg>
           {language === "de"
-            ? "📄 PDF-Bericht herunterladen"
-            : "📄 Download PDF Report"}
+            ? "PDF-Bericht herunterladen"
+            : "Download PDF Report"}
         </button>
       </div>
 
@@ -870,9 +870,9 @@ export default function AccessibilityResults({
                       </Tooltip>
                     </div>
                     <div className="flex items-center">
-                      <div className="w-12 h-12 relative mr-3">
+                      <div className="w-14 h-14 relative mr-3">
                         <svg
-                          className={`w-12 h-12 ${circleAnimation}`}
+                          className={`w-14 h-14 ${circleAnimation}`}
                           style={{ animationDelay: `${index * 0.05}s` }}
                           viewBox="0 0 36 36"
                         >
@@ -908,14 +908,16 @@ export default function AccessibilityResults({
                             x="18"
                             y="20.5"
                             textAnchor="middle"
-                            fontSize="10"
+                            fontSize="12"
+                            fontWeight="bold"
                             fill="currentColor"
+                            className="text-gray-900"
                           >
                             {category.count}
                           </text>
                         </svg>
                       </div>
-                      <span className="px-2.5 py-0.5 rounded-full text-sm font-medium bg-red-100 text-red-800">
+                      <span className="px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800 shadow-sm">
                         {category.count}{" "}
                         {language === "de"
                           ? "betroffene Elemente"

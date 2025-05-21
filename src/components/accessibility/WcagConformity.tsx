@@ -227,7 +227,7 @@ export default function WcagConformity({
 
   return (
     <div className="bg-white rounded-lg shadow overflow-hidden my-8">
-      <h2 className="text-2xl font-bold p-6 bg-gray-50 border-b border-gray-200">
+      <h2 className="text-2xl font-extrabold p-6 bg-blue-50 border-b border-blue-200 text-gray-900">
         {texts.title}
       </h2>
 
