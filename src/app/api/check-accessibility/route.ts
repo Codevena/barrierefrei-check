@@ -45,8 +45,8 @@ export async function POST(request: Request) {
         );
       }
       validatedUrl = urlObj.toString();
-    } catch (_error) {
-      // _ vor error bedeutet, dass wir die Variable absichtlich nicht verwenden
+    } catch (error) {
+      console.error("Fehler bei der URL-Validierung:", error);
       return NextResponse.json(
         {
           error: language === "de" ? "Ungültige URL" : "Invalid URL",
@@ -71,8 +71,8 @@ export async function POST(request: Request) {
         waitUntil: "networkidle2",
         timeout: 30000,
       });
-    } catch (_error) {
-      // _ vor error bedeutet, dass wir die Variable absichtlich nicht verwenden
+    } catch (error) {
+      console.error("Fehler bei der Seitenladung:", error);
       await browser.close();
       return NextResponse.json(
         {
